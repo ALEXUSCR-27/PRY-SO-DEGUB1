@@ -57,6 +57,7 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
         String console = "ALC TERMINAL\nCopyright (C) ALC Software. Todos los derechos reservados.\n>>>";
         jTextPane1.setText(console);
         //jTextPane1.disable();
@@ -103,7 +104,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        SSDTable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -179,11 +180,11 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("SSD Reserved Memory");
+        jLabel5.setText("SSD RM");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("RAM Reserved Memory");
+        jLabel6.setText("RAM RM");
 
         jTextArea1.setEditable(false);
         jTextArea1.setBackground(new java.awt.Color(51, 51, 51));
@@ -194,7 +195,8 @@ public class Principal extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jTextArea1.setText("LOAD = 2\nSTORE = 2\nMOV = 1\nADD = 3\nSUB = 3\nINC = 1\nDEC = 1\nSWAP = 1\nINT 20H = 2\nINT 09H = USER INT\nINT 21H = 5\nJMP = 2\nCMP = 2\nJE/JNE = 2\nPARAM = 3\nPUSH = 1\nPOP = 1\n\n");
         jTextArea1.setAutoscrolls(false);
-        jTextArea1.setBorder(null);
+        jTextArea1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextArea1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jTextArea1.setEnabled(false);
         jTextArea1.setFocusable(false);
@@ -206,21 +208,15 @@ public class Principal extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(0, 63, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -240,33 +236,14 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTable1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "INDEX", "VALUES"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        jTable2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        SSDTable.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 102, 102), null));
+        SSDTable.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        SSDTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -275,7 +252,7 @@ public class Principal extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.Short.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false
@@ -289,6 +266,44 @@ public class Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        SSDTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        SSDTable.setGridColor(new java.awt.Color(0, 204, 204));
+        SSDTable.setRowHeight(25);
+        SSDTable.setRowMargin(2);
+        SSDTable.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        SSDTable.setShowGrid(true);
+        SSDTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(SSDTable);
+
+        jTable2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "INDEX", "VALUES"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Short.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        jTable2.setGridColor(new java.awt.Color(0, 204, 204));
+        jTable2.setRowHeight(25);
+        jTable2.setRowMargin(2);
+        jTable2.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable2);
 
         jTextPane1.setBackground(new java.awt.Color(51, 51, 51));
@@ -298,7 +313,7 @@ public class Principal extends javax.swing.JFrame {
         jTextPane1.setCaretColor(new java.awt.Color(255, 255, 255));
         jScrollPane3.setViewportView(jTextPane1);
 
-        jTable3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jTable3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -322,11 +337,14 @@ public class Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable3.setGridColor(new java.awt.Color(51, 51, 51));
+        jTable3.setGridColor(new java.awt.Color(0, 204, 204));
+        jTable3.setRowHeight(25);
+        jTable3.setRowMargin(2);
         jTable3.setShowGrid(true);
+        jTable3.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(jTable3);
 
-        jTable4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jTable4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -350,6 +368,12 @@ public class Principal extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable4.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        jTable4.setGridColor(new java.awt.Color(0, 204, 204));
+        jTable4.setRowHeight(25);
+        jTable4.setRowMargin(2);
+        jTable4.setShowGrid(true);
+        jTable4.getTableHeader().setReorderingAllowed(false);
         jScrollPane5.setViewportView(jTable4);
 
         jScrollPane6.setBorder(null);
@@ -377,11 +401,11 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("SSD");
+        jLabel1.setText("SSD: 512kb");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("RAM");
+        jLabel2.setText("RAM: 256kb");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -397,33 +421,34 @@ public class Principal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(190, 190, 190)
                         .addComponent(jLabel1)
-                        .addGap(383, 383, 383)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(193, 193, 193)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane3)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
+                        .addGap(162, 162, 162)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
                         .addComponent(jLabel4)
-                        .addGap(104, 104, 104))))
+                        .addGap(93, 93, 93))))
             .addComponent(jScrollPane6)
         );
         jPanel1Layout.setVerticalGroup(
@@ -556,13 +581,11 @@ public class Principal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new Principal().setVisible(true);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new Principal().setVisible(true);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
@@ -574,19 +597,19 @@ public class Principal extends javax.swing.JFrame {
     public void setMemory() throws Exception {
        document = new ArrayList<>();
        methods.loadFile(routes, document);
-       //System.out.println(document);
        SSD = methods.loadMemoryReserved(ssdSize/8,ssdSize,document);
-      // System.out.println(SSD);
        showSSD(SSD);
     }
     
     /**
      * 
      * @param memory 
+     * @throws java.lang.Exception 
      */
     public void showSSD(Memory memory) throws Exception
     {
-       DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+       SSDTable.getColumnModel().getColumn(1).setPreferredWidth(20);
+       DefaultTableModel model = (DefaultTableModel) SSDTable.getModel();
        String [][] data = methods.getSSDTable(SSD);
        String[] cols = {"INDEX", "VALUES"};
 
@@ -596,7 +619,7 @@ public class Principal extends javax.swing.JFrame {
     
     public void refreshSSD() throws Exception
     {
-       DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+       DefaultTableModel model = (DefaultTableModel) SSDTable.getModel();
        String [][] data = methods.getSSDTable(SSD);
        String[] cols = {"INDEX", "VALUES"};
 
@@ -621,8 +644,8 @@ public class Principal extends javax.swing.JFrame {
         }
         jLabel1.setText("SSD: "+Integer.toString(ssdSize)+"kb");
         jLabel2.setText("RAM: "+Integer.toString(ramSize)+"kb");
-        jLabel5.setText("SSD Reserved Memory 0 -> "+ssdSize/8+"kb");
-        jLabel6.setText("RAM Reserved Memory 0 -> "+ramSize/8+"kb");
+        jLabel5.setText("SSD RM 0 => "+ssdSize/8+"kb");
+        jLabel6.setText("RAM RM 0 => "+ramSize/8+"kb");
                 
       
     }
@@ -776,6 +799,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable SSDTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -796,7 +820,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;

@@ -285,7 +285,6 @@ public class Methods {
         String[][] data = new String[memory.getMemorySize()][cols.length];
         List<Cell> cells = memory.getCellsReserved();
         int cont = cells.size();
-        //System.out.println(cont);
         int reservedIndex = 0;
         int userIndex = 0;
         for(int i = 0; i < memory.getMemorySize(); i++){
@@ -296,7 +295,7 @@ public class Methods {
                         data[i][1] = reservedCell.getName()+reservedCell.getInstructionAH();
                     }
                     else {
-                        data[i][1] = reservedCell.getName()+","+reservedCell.getStartingAddress()+","+reservedCell.getEndindAddress();
+                        data[i][1] = reservedCell.getName()+", START: "+reservedCell.getStartingAddress()+", END: "+reservedCell.getEndindAddress();
                     }
                     reservedIndex++;
                 }
@@ -309,18 +308,13 @@ public class Methods {
                         List<WeightTable> instructions = userCell.getInstructions();
                         data[i][1] = instructions.get(i-userCell.getStartingAddress()).getInstruction();
                     }
-                    else {
-                        System.out.println("si es null");
-                    }
                     
                 }
                 if (i>userCell.getEndindAddress()) {
                     userIndex++;
                 }
             }
-            
             data[i][0] = Integer.toString(i);
- 
         }
         return data;
     }
